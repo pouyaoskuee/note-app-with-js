@@ -31,7 +31,8 @@ export class NOTES{
 
     static getNotes(){
         const saveNotes = LOCALSTORAGE.get()
-        return saveNotes.sort((a,b) => new Date(a.update) > new Date(b.update) ? -1 : 1)
+            return saveNotes.sort((a,b) => new Date(a.update) > new Date(b.update) ? -1 : 1)
+
     }
 
 

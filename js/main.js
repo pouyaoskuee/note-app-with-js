@@ -1,23 +1,33 @@
 import {LOCALSTORAGE , NOTES , notes} from "/note%20app%20with%20js/js/noteAPI.js";
-import Ui from "/note%20app%20with%20js/js/notesview.js";
+// import Ui from "/note%20app%20with%20js/js/notesview.js";
+import APP from "/note%20app%20with%20js/js/app.js";
 
-const app = document.querySelector(".app");
-
-const ui = new Ui(app , {
-    addnote(){
-        console.log("add note");
-    },
-    noteedit(){
-        console.log("edit note");
-    },
-    noteselect(noteid){
-        console.log(noteid)
-    }
-
-});
+const root = document.querySelector(".app");
+const app = new APP(root)
 
 
-ui.updatenoteitem(NOTES.getNotes())
+
+
+// const ui = new Ui(app , {
+//     addnote(){
+//         console.log("add note");
+//     },
+//     noteedit(){
+//         console.log("edit note");
+//     },
+//     noteselect(noteid){
+//         console.log(noteid)
+//     },
+//
+//     noteremover(noteid){
+//         console.log(noteid)
+//     }
+//
+// });
+
+
+// app.ui.updatenoteitem(NOTES.getNotes())
+// app.updateActivenotes(NOTES.getNotes()[1]);
 
 
 
@@ -25,8 +35,9 @@ ui.updatenoteitem(NOTES.getNotes())
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    NOTES.setNotes(notes);
-    console.log(NOTES.getNotes())
+    // NOTES.setNotes();
+    // console.log(NOTES.getNotes())
+    // ui.updatepreviewvisibility(false);
     // NOTES.removeNote(1)
 
 })

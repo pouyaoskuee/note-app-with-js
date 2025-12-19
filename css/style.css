@@ -86,10 +86,24 @@ h3{
     color: white;
 }
 
+.notes__header{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.notes__header svg{
+    height: 3rem;
+    width: 3rem;
+}
+
 .sidebar__note{
+    display: flex;
+    flex-direction: column;
     border-top: 1px solid green;
     padding-top: 1rem;
     cursor: pointer;
+    gap: 1rem;
 }
 
 .selected{

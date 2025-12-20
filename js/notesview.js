@@ -38,10 +38,9 @@ export default class UI {
         });
 
         [title_input, body_input].forEach((input) => {
-            input.addEventListener("blur", (e) => {
+            input.addEventListener("blur", () => {
                 const newtitle = title_input.value.trim()
                 const newbody = body_input.value.trim()
-                console.log(newtitle, newbody)
                 noteedit(newtitle, newbody)
 
             })
@@ -75,9 +74,8 @@ export default class UI {
         }
         note_items.innerHTML = result;
         note_items.querySelectorAll('.sidebar__note').forEach(item => {
-            item.addEventListener('click', (e) => {
+            item.addEventListener('click', () => {
                 this.noteselect(item.dataset.id);
-                console.log(item.dataset.id)
             })
         })
         note_items.querySelectorAll('.notes__trash').forEach(item => {
@@ -91,7 +89,6 @@ export default class UI {
     }
 
     updateactivenotes(note){
-        console.log(note)
         this.root.querySelector('.main__header').value = note.title
         this.root.querySelector('.main__body').value = note.body
 

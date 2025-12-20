@@ -1,24 +1,7 @@
-export let notes = [
-    {
-        id: 1,
-        title: 'hello',
-        body: 'Lorem Ipsum',
-        update:2025 ,
-    },
-    {
-        id: 2,
-        title: 'mio',
-        body: 'Lorem Ipsum',
-        update:2022 ,
-    },
-    {
-        id: 3,
-        title: 'pio',
-        body: 'Lorem Ipsum',
-        update:2023 ,
-    }
 
-]
+
+
+let notes =[]
 
 
 
@@ -37,11 +20,7 @@ export class NOTES{
 
 
     static updatenotes(notetosave){
-        console.log(notetosave)
-        notes = NOTES.getNotes();
-        console.log(notetosave.id)
-        const existedNote = notes.find(note => note.id == notetosave.id)
-        console.log(existedNote)
+        const existedNote = notes.find(note => parseInt(note.id) == parseInt(notetosave.id))
         if(existedNote){
             existedNote.title = notetosave.title
             existedNote.body = notetosave.body
@@ -55,10 +34,9 @@ export class NOTES{
     }
 
     static removeNote(id){
-        // notes = NOTES.getNotes();
-        const filterdnotes = notes.filter(note => note.id !== id)
-        console.log(filterdnotes)
+        const filterdnotes = notes.filter(note => note.id !== parseInt(id))
         LOCALSTORAGE.set(filterdnotes)
+        notes = NOTES.getNotes();
     }
 
 

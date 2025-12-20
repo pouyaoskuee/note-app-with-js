@@ -1,4 +1,4 @@
-import {LOCALSTORAGE , NOTES } from "/note%20app%20with%20js/js/noteAPI.js";
+import { NOTES } from "/note%20app%20with%20js/js/noteAPI.js";
 import Ui from "/note%20app%20with%20js/js/notesview.js";
 
 export default class APP{
@@ -31,18 +31,9 @@ export default class APP{
                 }
                 NOTES.updatenotes(newNotes);
                 this.notes.push(newNotes);
-                console.log(this.notes)
-                console.log(newNotes);
-                // NOTES.set(newNotes );
                 this._refreshnotes()
             },
             noteedit:(newtitle , newbody)=>{
-                console.log(newtitle , newbody)
-                console.log({
-                    id: this.activeNotes.id,
-                    title: newtitle,
-                    body: newbody
-                })
                 NOTES.updatenotes({
                     id: this.activeNotes.id,
                     title: newtitle,
@@ -51,17 +42,12 @@ export default class APP{
                 this._refreshnotes()
             },
             noteselect:(noteid)=>{
-                console.log(noteid)
-
-                console.log(this.notes)
-                const select = this.notes.find((note) => note.id == noteid);
-                console.log(select)
+                const select = this.notes.find((note) => parseInt(note.id) === parseInt(noteid));
                 this.activeNotes = select;
                 this.ui.updateactivenotes(select);
             },
 
             noteremover:(noteid)=>{
-
                 NOTES.removeNote(noteid);
                 this._refreshnotes();
             }

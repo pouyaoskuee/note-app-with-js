@@ -41,6 +41,7 @@ export default class UI {
             input.addEventListener("blur", (e) => {
                 const newtitle = title_input.value.trim()
                 const newbody = body_input.value.trim()
+                console.log(newtitle, newbody)
                 noteedit(newtitle, newbody)
 
             })
@@ -59,10 +60,10 @@ export default class UI {
                         </svg>
                         <h3>${title}</h3>
                     </div>
-                  <p>${body}</p>
+                  <p>${body.length > max_length ? `...` : body}</p>
                  <p>${new Date(update).toLocaleString('en', {dateStyle:'full', timeStyle:"short"})}</p>
             </div>`
-    }//.length > max_length ? '...' : body
+    }
 
     updatenoteitem(notes){
         const note_items = document.querySelector(".sidebar__notes");
@@ -76,6 +77,7 @@ export default class UI {
         note_items.querySelectorAll('.sidebar__note').forEach(item => {
             item.addEventListener('click', (e) => {
                 this.noteselect(item.dataset.id);
+                console.log(item.dataset.id)
             })
         })
         note_items.querySelectorAll('.notes__trash').forEach(item => {
@@ -104,7 +106,6 @@ export default class UI {
         this.root.querySelector('.main').style.visibility = visible ? 'visible' : 'hidden'
 
     }
-
 
 }
 

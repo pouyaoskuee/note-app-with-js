@@ -21,4 +21,5 @@ let notes = [
 ]
 
 
+
 localStorage.setItem('notes', JSON.stringify(notes))

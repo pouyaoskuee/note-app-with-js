@@ -41,3 +41,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // NOTES.removeNote(1)
 
 })
+

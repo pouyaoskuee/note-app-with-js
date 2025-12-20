@@ -1,4 +1,4 @@
-import {LOCALSTORAGE , NOTES , notes} from "/note%20app%20with%20js/js/noteAPI.js";
+import {LOCALSTORAGE , NOTES } from "/note%20app%20with%20js/js/noteAPI.js";
 import Ui from "/note%20app%20with%20js/js/notesview.js";
 
 export default class APP{
@@ -23,30 +23,52 @@ export default class APP{
     _handelers(){
         return {
             addnote:()=>{
-                const newNotes = {
+                const newNotes =  {
                     id: 4,
                     title: 'new note',
                     body: 'type some note',
                     update:2025,
                 }
                 NOTES.updatenotes(newNotes);
+                this.notes.push(newNotes);
+                console.log(this.notes)
+                console.log(newNotes);
+                // NOTES.set(newNotes );
                 this._refreshnotes()
             },
-            noteedit:()=>{
-                console.log("edit note");
+            noteedit:(newtitle , newbody)=>{
+                console.log(newtitle , newbody)
+                console.log({
+                    id: this.activeNotes.id,
+                    title: newtitle,
+                    body: newbody
+                })
+                NOTES.updatenotes({
+                    id: this.activeNotes.id,
+                    title: newtitle,
+                    body: newbody
+                })
+                this._refreshnotes()
             },
             noteselect:(noteid)=>{
-                const select = notes.find((note) => note.id == noteid);
+                console.log(noteid)
+
+                console.log(this.notes)
+                const select = this.notes.find((note) => note.id == noteid);
+                console.log(select)
                 this.activeNotes = select;
                 this.ui.updateactivenotes(select);
             },
 
             noteremover:(noteid)=>{
-                console.log(noteid)
+
+                NOTES.removeNote(noteid);
+                this._refreshnotes();
             }
         }
     }
 
 }
+
 
 

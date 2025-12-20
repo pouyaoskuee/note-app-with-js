@@ -37,12 +37,15 @@ export class NOTES{
 
 
     static updatenotes(notetosave){
+        console.log(notetosave)
         notes = NOTES.getNotes();
+        console.log(notetosave.id)
         const existedNote = notes.find(note => note.id == notetosave.id)
+        console.log(existedNote)
         if(existedNote){
-            notes.title = notetosave.title
-            notes.body = notetosave.body
-            notes.update = new Date().toISOString()
+            existedNote.title = notetosave.title
+            existedNote.body = notetosave.body
+            existedNote.update = new Date().toISOString()
         }else{
             notetosave.id = new Date().getTime()
             notetosave.update = new Date().toISOString()
@@ -52,10 +55,12 @@ export class NOTES{
     }
 
     static removeNote(id){
-        notes = NOTES.getNotes();
+        // notes = NOTES.getNotes();
         const filterdnotes = notes.filter(note => note.id !== id)
+        console.log(filterdnotes)
         LOCALSTORAGE.set(filterdnotes)
     }
+
 
 }
 
